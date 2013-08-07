@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tablerow_selector"
+    android:clickable="true" >
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/tableRowServerPlayerImageView"
+            android:layout_width="30dip"
+            android:layout_height="match_parent"
+            android:layout_margin="4dip"
+            android:background="@color/background_light"
+            android:contentDescription="@string/player_image"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/tableRowServerPlayerPlayerTextView"
+            style="@style/TableRowPlayer.Player.Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/player" />
+    </LinearLayout>
+
+</TableRow>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.skarbo.csgobrowser"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:configChanges="orientation"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Sherlock.Light" >
+        <activity
+            android:name="com.skarbo.csgobrowser.activity.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.skarbo.csgobrowser.activity.TestActivity"
+            android:label="Test Activity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.skarbo.csgobrowser.activity.PreferenceActivity"
+            android:label="Preferences" />
+        <activity
+            android:name="com.skarbo.csgobrowser.activity.ServerActivity"
+            android:label="@string/server" />
+        <activity
+            android:name="com.skarbo.csgobrowser.activity.MatchActivity"
+            android:label="@string/match" />
+        <activity
+            android:name="com.skarbo.csgobrowser.activity.ProfileActivity"
+            android:label="@string/profile" />
+    </application>
+
+</manifest>

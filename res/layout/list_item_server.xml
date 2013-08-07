@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:paddingLeft="3dip"
+    android:paddingRight="3dip" >
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="3dip"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/serverName_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/server"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/serverCountryImageView"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:contentDescription="@string/country"
+                android:gravity="center"
+                android:paddingRight="2dp"
+                android:src="@drawable/flag_us" />
+
+            <TextView
+                android:id="@+id/serverInfoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingRight="2dp"
+                android:text="Info"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/serverServiceImageView"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:contentDescription="@string/service"
+        android:gravity="center"
+        android:src="@drawable/logo_esea" />
+
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="3dip"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/serverCurrentPlayersTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/serverMaxPlayersTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="10"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
+
+        <TextView
+            android:id="@+id/serverStatusAvailableTextView"
+            style="@style/ServerStatus.Available" />
+
+        <TextView
+            android:id="@+id/serverStatusWaitingTextView"
+            style="@style/ServerStatus.Waiting"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/serverStatusLiveTextView"
+            style="@style/ServerStatus.Live"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/serverStatusLiveScoreLayout"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/server_status_tile_live"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/serverStatusLiveScoreHomeTextView"
+                style="@style/ServerStatus.Live.Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/white" />
+
+            <TextView
+                android:id="@+id/serverStatusLiveScoreAwayTextView"
+                style="@style/ServerStatus.Live.Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

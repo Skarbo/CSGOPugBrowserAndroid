@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/border_dark"
+        android:paddingTop="2dip" />
+
+    <TextView
+        android:id="@+id/profileStatNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/profileStatValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Value"
+        android:textStyle="bold" />
+
+</RelativeLayout>

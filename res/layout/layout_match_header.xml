@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/serverHeaderLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="58dip"
+    android:background="@drawable/grey_background_pattern" >
+
+    <ImageView
+        android:id="@+id/serverMapImageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:alpha="0.5"
+        android:contentDescription="@string/server_map"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/matchCountryImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:contentDescription="@string/country"
+            android:padding="4dp"
+            android:src="@drawable/flag_us" />
+
+        <TextView
+            android:id="@+id/matchDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="-2"
+            android:shadowDy="2"
+            android:shadowRadius="0.01"
+            android:text="01. Jan 70"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="4dip" >
+
+        <LinearLayout
+            android:id="@+id/matchScoreLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/matchScoreHomeTextView"
+                style="@style/ServerStatus"
+                android:layout_marginRight="5dip"
+                android:background="@drawable/server_score_tile_draw"
+                android:text="30"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/matchScoreAwayTextView"
+                style="@style/ServerStatus"
+                android:background="@drawable/server_score_tile_draw"
+                android:text="30"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/matchServiceImageView"
+        android:layout_width="24dip"
+        android:layout_height="24dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:alpha="0.7"
+        android:contentDescription="@string/service"
+        android:paddingRight="4dp"
+        android:src="@drawable/logo_esea" />
+
+</RelativeLayout>

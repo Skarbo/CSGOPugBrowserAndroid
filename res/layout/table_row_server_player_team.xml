@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dip"
+        android:layout_span="3"
+        android:layout_weight="1"
+        android:background="@drawable/grey_background_pattern"
+        android:orientation="vertical"
+        android:paddingRight="4dip" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_marginBottom="2dip"
+            android:background="@android:color/darker_gray" />
+
+        <include layout="@layout/layout_player_team" />
+    </LinearLayout>
+
+</TableRow>

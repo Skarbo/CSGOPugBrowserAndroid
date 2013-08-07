@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CS:GO Browser</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="resfresh">Refresh</string>
+    <string name="service">Service</string>
+    <string name="country">Country</string>
+    <string name="servers">Servers</string>
+    <string name="server">Server</string>
+    <string name="server_none">No servers</string>
+    <string name="server_ipaddress">IP Address</string>
+    <string name="server_map">Map</string>
+    <string name="server_status">Status</string>
+    <string name="server_status_available">Available</string>
+    <string name="server_status_available_letter">A</string>
+    <string name="server_status_waiting">Waiting</string>
+    <string name="server_status_waiting_letter">W</string>
+    <string name="server_status_live">Live</string>
+    <string name="server_status_live_letter">L</string>
+    <string name="services">Services</string>
+    <string name="service_esea">ESEA</string>
+    <string name="service_leetway">Leetway</string>
+    <string name="location">Location</string>
+    <string name="locations">Locations</string>
+    <string name="status">Status</string>
+    <string name="server_name">Server name</string>
+    <string name="player">Player</string>
+    <string name="player_image">Player image</string>
+    <string name="players_none">No players</string>
+    <string name="team">Team</string>
+    <string name="team_home">Home</string>
+    <string name="team_away">Away</string>
+    <string name="match">Match</string>
+    <string name="match_stats_none">No statistics</string>
+    <string name="profile">Profile</string>
+
+    <string-array name="player_stats">
+        <item>playerGamingRating|Player Game Rating|PGR</item>
+        <item>reputation|Reputation|Rep</item>
+        <item>time|Time|</item>
+        <item>roundWinShares|Round Win Shares|RWS</item>
+        <item>roundWinSharesRank|RWS Rank|RWS Rank</item>
+        <item>frags|Frags|F</item>
+        <item>assists|Assists|A</item>
+        <item>deaths|Deaths|D</item>
+        <item>suicides|Suicides|S</item>
+        <item>bombPlants|Bomb Plants|BP</item>
+        <item>bombDefuse|Bomb Defuse|BD</item>
+        <item>kill2|2 Kill Rounds|2K</item>
+        <item>kill3|3 Kill Rounds|3K</item>
+        <item>kill4|4 Kill Rounds|4K</item>
+        <item>kill5|5 Kill Rounds|5K</item>
+        <item>oneV1|1v1 Situations|1v1</item>
+        <item>oneV2|1v2 Situations|1v2</item>
+        <item>oneV3|1v3 Situations|1v3</item>
+        <item>oneV4|1v4 Situations|1v4</item>
+        <item>oneV5|1v5 Situations|1v5</item>
+        <item>headshotPercentage|Headshot percentage|HSP</item>
+        <item>headshots|Headshots|HS</item>
+        <item>roundsPlayed|Rounds Played|RP</item>
+        <item>damagePrRound|Damage Pr Round|DPR</item>
+        <item>fragsPrRound|Frags Pr Round|FPR</item>
+        <item>points|Points gained/lost|Points</item>
+        <item>teamKills|Team Kills|TK</item>
+        <item>killDeathRatio|Kill to Death Ratio|KDR</item>
+        <item>wonMatchesPercentage|Win Matches Percentage|Win%</item>
+    </string-array>
+    <string-array name="services">
+        <item>esea|ESEA</item>
+        <item>leetway|Leetway</item>
+    </string-array>
+
+    <string name="Next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="profile_image">Profile image</string>
+    <string name="profile_nickname">Nickname</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_loading">Loading profile</string>
+    <string name="profile_stats_main">Main statistics</string>
+    <string name="overall">Overall</string>
+    <string name="stats">Statistics</string>
+    <string name="stats_frags">Frags</string>
+    <string name="stats_deaths">Deaths</string>
+    <string name="stats_kdr">F/D Ratio</string>
+    <string name="stats_hsp_accuracy">HS Accuracy</string>
+    <string name="stats_headshots">%1$s headshots</string>
+    <string name="stats_win_lose_ratio">W/L Ratio</string>
+    <string name="stats_damage_pr_round">Dmg/round</string>
+    <string name="stats_rounds_played">%1$s rounds</string>
+    <string name="profile_top_none">No information</string>
+    <string name="profile_matches_none">No matches</string>
+    <string name="profile_stats_none">No statistics</string>
+    <string name="service_username">Username</string>
+    <string name="service_username_search">Search username</string>
+    <string name="service_toggle">Toggle service</string>
+    <string name="service_user_search">Search %1$s user</string>
+    <string name="results_none">No results</string>
+    <string name="service_userid">User id</string>
+    <string name="service_user_name">User name</string>
+    <string name="service_user_name_none"><i>No username</i></string>
+
+</resources>

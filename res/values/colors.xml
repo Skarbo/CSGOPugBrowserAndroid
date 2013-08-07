@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="gray_light">#E6E6E6</color>
+    <color name="background_light">#F2F2F2</color>
+    <color name="background_dark">#E6E6E6</color>
+    <color name="text_light">#555555</color>
+    <color name="text_lighter">#AAA</color>
+    <color name="text_blue">#33b5e5</color>
+    <color name="border_light">#ECECEC</color>
+    <color name="border_dark">#CCC</color>
+    <color name="border_blue">#33b5e5</color>
+    <color name="gray_transparent">#33CCCCCC</color>
+
+</resources>
