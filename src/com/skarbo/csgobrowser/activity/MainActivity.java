@@ -2,278 +2,176 @@ package com.skarbo.csgobrowser.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
 import com.skarbo.csgobrowser.R;
-import com.skarbo.csgobrowser.fragment.MenuFragment;
 import com.skarbo.csgobrowser.fragment.ServersFragment;
-import com.skarbo.csgobrowser.handler.Handler;
-import com.skarbo.csgobrowser.listener.HandlerListener;
-import com.skarbo.csgobrowser.utils.Utils;
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
-public class MainActivity extends SlidingFragmentActivity implements HandlerListener {
+public class MainActivity extends AbstractActivity {
 
-	private static final String TAG = MainActivity.class.getSimpleName();
-	private static final String CONTENT_SAVE = "content";
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String CONTENT_SAVE = "content";
+    private static final int MENU_SETTINGS = 3;
+    private static final int ORDER_MENU_SETTINGS = 50;
+    private DrawerLayout drawerLayout;
+    private ListView drawerList;
+    private ActionBarDrawerToggle drawerToggle;
+    private Fragment content;
+    private MenuItem menuSettings;
 
-	private static final int MENU_SETTINGS = 1;
-	private static final int MENU_REFRESH = 2;
-	private static final int MENU_CANCEL = 3;
+    // ... ON
 
-	private Handler handler;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	private Fragment content;
-	private MenuFragment menuFragment;
-	private SlidingMenu slidingMenu;
-	private MenuItem menuRefresh;
-	private MenuItem menuSettings;
-	private MenuItem menuCancel;
+        // CONTENT
 
-	// ... ON
+        // this.menuFragment = new MenuFragment();
+        //
+        // if (savedInstanceState != null)
+        // this.content =
+        // getSupportFragmentManager().getFragment(savedInstanceState,
+        // CONTENT_SAVE);
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        // /CONTENT
 
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setSupportProgressBarIndeterminateVisibility(false);
+        // VIEW
 
-		// ACTIONBAR
+        // // Set the Above View
+        // setContentView(R.layout.frame_content);
+        // if (this.content != null)
+        // getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
+        // this.content).commit();
+        // else
+        // getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
+        // new ServersFragment()).commit();
+        // //
+        // getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
+        // //
+        // ServerFragment.createServerFragment(LeetwayServiceConfig.SERVICE_ID,
+        // // "15")).commit();
+        //
+        // // Set the Behind View
+        // setBehindContentView(R.layout.frame_menu);
+        // getSupportFragmentManager().beginTransaction().replace(R.id.menu_frame,
+        // menuFragment).commit();
+        //
+        // // Customize the SlidingMenu
+        // SlidingMenu sm = getSlidingMenu();
+        // sm.setShadowWidthRes(R.dimen.shadow_width);
+        // sm.setShadowDrawable(R.drawable.shadow);
+        // sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        // sm.setFadeDegree(0.35f);
+        // sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+        //
+        // // Set home as up
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		getSupportActionBar().setTitle(R.string.app_name);
+        setContentView(R.layout.activity_main);
 
-		// /ACTIONBAR
+        this.drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        this.drawerList = (ListView) findViewById(R.id.left_drawer);
 
-		// HANDLER
+        this.drawerToggle = new ActionBarDrawerToggle(this, this.drawerLayout, R.drawable.ic_drawer,
+                R.string.drawer_open, R.string.drawer_close);
+        this.drawerLayout.setDrawerListener(this.drawerToggle);
 
-		this.handler = new Handler(this);
-		try {
-			this.handler.doContainersCacheLoad();
-		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "Could not load cache file", Toast.LENGTH_SHORT).show();
-			Log.e(TAG, "onCreate: doContainersCacheLoad: " + e.getMessage());
-		}
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new ServersFragment()).commit();
 
-		// /HANDLER
+        // /VIEW
 
-		// CONTENT
+        // Intent matchIntent =
+        // MatchActivity.createServerActivity(getApplicationContext(),
+        // LeetwayServiceConfig.SERVICE_ID, "22468");
+        // startActivity(matchIntent);
+        // Intent profileIntent =
+        // ProfileActivity.createProfileActivity(getApplicationContext(),
+        // LeetwayServiceConfig.SERVICE_ID, "235");
+        // startActivity(profileIntent);
+        // Intent profileIntent =
+        // ProfileActivity.createProfileActivity(getApplicationContext(),
+        // EseaServiceConfig.SERVICE_ID, "523111");
+        // startActivity(profileIntent);
 
-		this.menuFragment = new MenuFragment();
+    }
 
-		if (savedInstanceState != null)
-			this.content = getSupportFragmentManager().getFragment(savedInstanceState, CONTENT_SAVE);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+        if (getHandler() != null)
+            getHandler().doContainersCacheDelete();
+    }
 
-		// /CONTENT
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menuSettings = menu.add(0, MENU_SETTINGS, 0, "Settings");
+        menuSettings.setIcon(R.drawable.action_settings);
+        MenuItemCompat.setShowAsAction(menuSettings, MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
-		// VIEW
+        return super.onCreateOptionsMenu(menu);
+    }
 
-		// Set the Above View
-		setContentView(R.layout.frame_content);
-		if (this.content != null)
-			getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, this.content).commit();
-		else
-			getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new ServersFragment()).commit();
-		// getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
-		// ServerFragment.createServerFragment(LeetwayServiceConfig.SERVICE_ID,
-		// "15")).commit();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (this.drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
 
-		// Set the Behind View
-		setBehindContentView(R.layout.frame_menu);
-		getSupportFragmentManager().beginTransaction().replace(R.id.menu_frame, menuFragment).commit();
+        switch (item.getItemId()) {
+            case MENU_SETTINGS:
+                doSettings();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-		// Customize the SlidingMenu
-		SlidingMenu sm = getSlidingMenu();
-		sm.setShadowWidthRes(R.dimen.shadow_width);
-		sm.setShadowDrawable(R.drawable.shadow);
-		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-		sm.setFadeDegree(0.35f);
-		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+    // ... /ON
 
-		// Set home as up
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    // ... GET
 
-		// /VIEW
+    @Override
+    protected String getActivityTitle() {
+        return getResources().getString(R.string.app_name);
+    }
 
-		// Intent matchIntent =
-		// MatchActivity.createServerActivity(getApplicationContext(),
-		// LeetwayServiceConfig.SERVICE_ID, "22468");
-		// startActivity(matchIntent);
-		// Intent profileIntent =
-		// ProfileActivity.createProfileActivity(getApplicationContext(),
-		// LeetwayServiceConfig.SERVICE_ID, "235");
-		// startActivity(profileIntent);
-		// Intent profileIntent =
-		// ProfileActivity.createProfileActivity(getApplicationContext(),
-		// EseaServiceConfig.SERVICE_ID, "523111");
-		// startActivity(profileIntent);
+    // ... /GET
 
-	}
+    // ... HAS
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		Log.d(TAG, "onDestroy");
-		if (this.handler != null)
-			this.handler.doContainersCacheDelete();
-	}
+    @Override
+    protected boolean hasRefreshActionbarItem() {
+        return true;
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		Log.d(TAG, "OnResume");
+    @Override
+    protected boolean hasCancelActionbarItem() {
+        return true;
+    }
 
-		if (this.handler != null)
-			this.handler.addListener(TAG, this);
+    // ... /HAS
 
-		doRefresh();
-	}
+    // ... DO
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		Log.d(TAG, "OnActivityResult");
+    private void doSettings() {
+        Intent settingsIntent = new Intent(this, PreferenceActivity.class);
+        startActivity(settingsIntent);
+    }
 
-		if (this.handler != null) {
-			try {
-				this.handler.doContainersCacheLoad();
-			} catch (Exception e) {
-				Log.e(TAG, "onActivityResult: doContainersCacheLoad: " + e.getMessage());
-			}
-		}
-	}
+    public void doSwitchContent(Fragment fragment) {
+        this.content = fragment;
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+        // getSlidingMenu().showContent();
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		Log.d(TAG, "OnPause");
-
-		if (this.handler != null)
-			this.handler.removeListener(TAG);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menuRefresh = menu.add(0, MENU_REFRESH, 1, "Refresh");
-		menuRefresh.setIcon(R.drawable.navigation_refresh).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-		menuSettings = menu.add(0, MENU_SETTINGS, 0, "Settings");
-		menuSettings.setIcon(R.drawable.action_settings).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-		menuCancel = menu.add(0, MENU_CANCEL, 2, "Cancel");
-		menuCancel.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-		menuCancel.setEnabled(false);
-
-		if (this.handler.isUpdating()) {
-			this.menuRefresh.setEnabled(false);
-			this.doRefreshAnimation(true);
-			this.menuCancel.setEnabled(true);
-		}
-
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case MENU_SETTINGS:
-			doSettings();
-			return true;
-		case MENU_REFRESH:
-			doRefresh();
-			return true;
-		case MENU_CANCEL:
-			doCancel();
-			return true;
-		case android.R.id.home:
-			toggle();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	// ... /ON
-
-	// ... GET
-
-	public Handler getHandler() {
-		return handler;
-	}
-
-	// ... /GET
-
-	// ... ... HANDLER
-
-	@Override
-	public void onUpdating() {
-		Log.d(TAG, "OnUpdating");
-		if (this.menuRefresh != null)
-			this.menuRefresh.setEnabled(false);
-		if (this.menuCancel != null)
-			this.menuCancel.setEnabled(true);
-		this.doRefreshAnimation(true);
-	}
-
-	@Override
-	public void onUpdated() {
-		Log.d(TAG, "OnUpdated");
-		if (this.menuRefresh != null)
-			this.menuRefresh.setEnabled(true);
-		if (this.menuCancel != null)
-			this.menuCancel.setEnabled(false);
-		this.doRefreshAnimation(false);
-	}
-
-	@Override
-	public void onRefresh() {
-		Log.d(TAG, "OnRefresh");
-	}
-
-	// ... ... /HANDLER
-
-	// ... DO
-
-	private void doRefresh() {
-		if (this.handler != null) {
-			this.handler.doReset();
-			this.handler.doRefresh();
-		}
-	}
-
-	private void doCancel() {
-		if (this.handler != null) {
-			Toast.makeText(getApplicationContext(), "Canceling", Toast.LENGTH_SHORT).show();
-			this.handler.doReset();
-		}
-	}
-
-	private void doRefreshAnimation(boolean active) {
-		Utils.rotateMenuItem(getApplicationContext(), this.menuRefresh, active);
-	}
-
-	private void doSettings() {
-		Intent settingsIntent = new Intent(this, PreferenceActivity.class);
-		startActivity(settingsIntent);
-	}
-
-	public void doSwitchContent(Fragment fragment) {
-		this.content = fragment;
-		getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-		getSlidingMenu().showContent();
-	}
-
-	// ... /DO
-
-	// INTERFACE
-
-	public interface HomeHandler {
-		public void onHome();
-	}
-
-	// /INTERFACE
+    // ... /DO
 
 }

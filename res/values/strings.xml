@@ -100,5 +100,8 @@
     <string name="service_userid">User id</string>
     <string name="service_user_name">User name</string>
     <string name="service_user_name_none"><i>No username</i></string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="preference">Preference</string>
 
 </resources>

@@ -52,7 +52,7 @@ public class Handler {
 		this.bitmapCache = new LruCache<String, Bitmap>(cacheSize) {
 			@Override
 			protected int sizeOf(String key, Bitmap bitmap) {
-				return bitmap.getByteCount() / 1024;
+				return (int) (Utils.getBitmapSizeInBytes(bitmap) / 1024);
 			}
 		};
 

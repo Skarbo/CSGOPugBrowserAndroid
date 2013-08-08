@@ -17,10 +17,8 @@
             android:layout_centerVertical="true"
             android:gravity="center" >
 
-            <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/service_toggle" />
+            <include layout="@layout/layout_preference_service_toggle" />
+
         </LinearLayout>
 
         <LinearLayout

@@ -28,6 +28,7 @@ import com.skarbo.csgobrowser.handler.Handler;
 import com.skarbo.csgobrowser.has.HasServer;
 import com.skarbo.csgobrowser.listener.HandlerListener;
 import com.skarbo.csgobrowser.utils.DownloadImageTask;
+import com.skarbo.csgobrowser.utils.UiUtils;
 import com.skarbo.csgobrowser.utils.Utils;
 import com.skarbo.csgobrowser.utils.Utils.TitleAcronym;
 
@@ -193,14 +194,11 @@ public class PlayersServerFragment extends Fragment implements HandlerListener {
 			((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore)).setText(String
 					.valueOf(server.scoreHome));
 			if (server.scoreHome > server.scoreAway) {
-				((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore))
-						.setBackground(getResources().getDrawable(R.drawable.server_score_tile_win));
+                UiUtils.setViewBackground(tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore), getResources().getDrawable(R.drawable.server_score_tile_win));
 			} else if (server.scoreHome < server.scoreAway) {
-				((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore))
-						.setBackground(getResources().getDrawable(R.drawable.server_score_tile_lose));
+                UiUtils.setViewBackground(tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore), getResources().getDrawable(R.drawable.server_score_tile_lose));
 			} else {
-				((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore))
-						.setBackground(getResources().getDrawable(R.drawable.server_score_tile_draw));
+                UiUtils.setViewBackground(tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore), getResources().getDrawable(R.drawable.server_score_tile_draw));
 			}
 
 			if (server.scoreHome == -1)
@@ -212,14 +210,11 @@ public class PlayersServerFragment extends Fragment implements HandlerListener {
 			((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore)).setText(String
 					.valueOf(server.scoreAway));
 			if (server.scoreHome < server.scoreAway) {
-				((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore))
-						.setBackground(getResources().getDrawable(R.drawable.server_score_tile_win));
+                UiUtils.setViewBackground(tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore), getResources().getDrawable(R.drawable.server_score_tile_win));
 			} else if (server.scoreHome > server.scoreAway) {
-				((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore))
-						.setBackground(getResources().getDrawable(R.drawable.server_score_tile_lose));
+                UiUtils.setViewBackground(tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore), getResources().getDrawable(R.drawable.server_score_tile_lose));
 			} else {
-				((TextView) tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore))
-						.setBackground(getResources().getDrawable(R.drawable.server_score_tile_draw));
+                UiUtils.setViewBackground(tableRowServerPlayerTeam.findViewById(R.id.layoutPlayerTeamPlayerTeamScore), getResources().getDrawable(R.drawable.server_score_tile_draw));
 			}
 
 			if (server.scoreAway == -1)

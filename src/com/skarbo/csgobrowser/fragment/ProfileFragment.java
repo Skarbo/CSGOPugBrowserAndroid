@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.skarbo.csgobrowser.R;
 import com.skarbo.csgobrowser.config.ServiceConfig;
 import com.skarbo.csgobrowser.container.ProfilesContainer.Profile;
@@ -88,7 +88,7 @@ public class ProfileFragment extends Fragment implements HandlerListener, HasPro
 		this.profileViewPager.setAdapter(profilePagerAdapter);
 		this.profileViewPager.setCurrentItem(PROFILE_CHILD_INFO);
 
-		((SherlockFragmentActivity) getActivity()).getSupportActionBar().setTitle(R.string.profile);
+		((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(R.string.profile);
 		doUpdateView();
 	}
 
@@ -183,7 +183,7 @@ public class ProfileFragment extends Fragment implements HandlerListener, HasPro
 			this.profileLayout.setVisibility(View.VISIBLE);
 			this.profileViewPager.setVisibility(View.VISIBLE);
 
-			((SherlockFragmentActivity) getActivity()).getSupportActionBar().setSubtitle(profile.nickname);
+			((ActionBarActivity) getActivity()).getSupportActionBar().setSubtitle(profile.nickname);
 			this.profileNicknameTextView.setText(profile.nickname);
 
 			// Service image
